@@ -19,4 +19,7 @@ services:
     volumes:
      - .:/starter
      - /starter/node_modules
+     - /starter/uploads
+     - /starter/profile_pictures
+     - /starter/post_pictures
      
