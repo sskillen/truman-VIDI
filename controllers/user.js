@@ -114,9 +114,16 @@ exports.postSignup = async(req, res, next) => {
         /*###############################
         Place Experimental Varibles Here!
         ###############################*/
-        const numConditions = process.env.NUM_EXP_CONDITIONS;
-        const experimentalConditionNames = process.env.EXP_CONDITIONS_NAMES.split(",");
-        const experimentalCondition = experimentalConditionNames[Math.floor(Math.random() * numConditions)];
+        let experimentalCondition;
+        if (process.env.OVERRIDE_CONDITION) {
+            // Use override condition if set (for local testing)
+            experimentalCondition = process.env.OVERRIDE_CONDITION;
+        } else {
+            // Randomly assign condition
+            const numConditions = process.env.NUM_EXP_CONDITIONS;
+            const experimentalConditionNames = process.env.EXP_CONDITIONS_NAMES.split(",");
+            experimentalCondition = experimentalConditionNames[Math.floor(Math.random() * numConditions)];
+        }
 
         const surveyLink = process.env.POST_SURVEY ?
             process.env.POST_SURVEY +

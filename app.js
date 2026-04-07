@@ -49,6 +49,12 @@ const useravatarupload = multer({ storage: useravatar_options });
 dotenv.config({ path: '.env' });
 
 /**
+ * Initialize condition filter for local testing
+ */
+const conditionFilter = require('./config/conditionFilter');
+conditionFilter.initializeConditions();
+
+/**
  * Controllers (route handlers).
  */
 const actorsController = require('./controllers/actors');
@@ -163,6 +169,8 @@ app.use((req, res, next) => {
     res.locals.cdn = process.env.CDN;
     next();
 });
+
+app.use(conditionFilter.conditionOverrideMiddleware);
 
 app.use((req, res, next) => {
     // If a user attempts to access a site page that requires logging in, but they are not logged in, then record the page they desired to visit.

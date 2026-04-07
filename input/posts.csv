@@ -1,3 +1,11 @@
 id,body,picture,actor,likes,time,condition,class
-0,Immigration protests escalate,immigration.jpg,news_brand,0,-20:35,,
-1,Climate protests escalate,climate-change.jpg,breaking_news,0,-11:13,,
+0,Immigration protests escalate,immigration.jpg,news_brand,0,-20:35,control_im,
+1,Immigration protests escalate,immigration.jpg,news_brand,0,-20:35,incivility_im,
+2,Immigration protests escalate,immigration.jpg,news_brand,0,-20:35,intolerence_im,
+3,Immigration protests escalate,immigration.jpg,news_brand,0,-20:35,misinformation_im,
+4,Immigration protests escalate,immigration.jpg,news_brand,0,-20:35,us_them_im,
+5,Climate protests escalate,climate-change.jpg,breaking_news,0,-20:35,control_cl,
+6,Climate protests escalate,climate-change.jpg,breaking_news,0,-20:35,incivility_cl,
+7,Climate protests escalate,climate-change.jpg,breaking_news,0,-20:35,intolerence_cl,
+8,Climate protests escalate,climate-change.jpg,breaking_news,0,-20:35,misinformation_cl,
+9,Climate protests escalate,climate-change.jpg,breaking_news,0,-20:35,us_them_cl,

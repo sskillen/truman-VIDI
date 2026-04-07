@@ -2,6 +2,7 @@ const Script = require('../models/Script.js');
 const User = require('../models/User');
 const Notification = require('../models/Notification');
 const helpers = require('./helpers');
+const conditionFilter = require('../config/conditionFilter');
 const _ = require('lodash');
 const dotenv = require('dotenv');
 dotenv.config({ path: '.env' }); // See the file .env.example for the structure of .env
@@ -17,9 +18,10 @@ exports.getScript = async(req, res, next) => {
         const time_diff = time_now - req.user.createdAt; // Time difference between now and user account creation, in milliseconds.
         const time_limit = time_diff - one_day; // Date in milliseconds 24 hours ago from now. This is used later to show posts only in the past 24 hours.
 
-        const user = await User.findById(req.user.id)
+        let user = await User.findById(req.user.id)
             .populate('posts.comments.actor')
             .exec();
+        user = conditionFilter.applyConditionOverride(user, req);
 
         // If the user is no longer active, sign the user out.
         if (!user.active) {
@@ -73,7 +75,8 @@ exports.getScript = async(req, res, next) => {
  */
 exports.newPost = async(req, res) => {
     try {
-        const user = await User.findById(req.user.id).exec();
+        let user = await User.findById(req.user.id).exec();
+        user = conditionFilter.applyConditionOverride(user, req);
         if (req.file) {
             user.numPosts = user.numPosts + 1; // Count begins at 0
             const currDate = Date.now();

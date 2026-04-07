@@ -2,6 +2,7 @@ const Script = require('../models/Script.js');
 const User = require('../models/User');
 const Notification = require('../models/Notification.js');
 const helpers = require('./helpers');
+const conditionFilter = require('../config/conditionFilter');
 const _ = require('lodash');
 
 /**
@@ -13,7 +14,7 @@ const _ = require('lodash');
 exports.getNotifications = async(req, res) => {
     try {
         if (req.user) {
-            const user = await User.findById(req.user.id)
+            let user = await User.findById(req.user.id)
                 .populate('posts.comments.actor')
                 .populate({
                     path: 'feedAction.post',
@@ -21,6 +22,7 @@ exports.getNotifications = async(req, res) => {
                         path: 'actor'
                     }
                 }).exec();
+            user = conditionFilter.applyConditionOverride(user, req);
             const currDate = Date.now();
             const lastNotifyVisit = user.lastNotifyVisit; //Absolute Date
             const notification_feed = await Notification.find({

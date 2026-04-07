@@ -2,6 +2,7 @@ const Actor = require('../models/Actor.js');
 const Script = require('../models/Script.js');
 const User = require('../models/User');
 const helpers = require('./helpers');
+const conditionFilter = require('../config/conditionFilter');
 const _ = require('lodash');
 const dotenv = require('dotenv');
 dotenv.config({ path: '.env' }); // See the file .env.example for the structure of .env
@@ -34,7 +35,8 @@ exports.getActors = async(req, res) => {
 exports.getActor = async(req, res, next) => {
     const time_diff = Date.now() - req.user.createdAt;
     try {
-        const user = await User.findById(req.user.id).exec();
+        let user = await User.findById(req.user.id).exec();
+        user = conditionFilter.applyConditionOverride(user, req);
         const actor = await Actor.findOne({ username: req.params.userId }).exec();
         if (actor == null) {
             const myerr = new Error('Actor object not found!');
