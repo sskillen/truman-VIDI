@@ -1,7 +1,7 @@
 id,body,actor,postID,likes,time,condition,class
-0,"I think this is happening where I live. I hope everyone stays safe and this doesn’t get out of hand. Good luck to the protestors.  ",unknown_user,0,0,-7:14,control_im,
-1,"Another immigration protest . . . not sure what to make of all this. On the one hand, it’s good people can express themselves, but on the other, this seems very disruptive.  ",unknown_user,0,0,-4:02,control_im,
-2,"Hmmm, interesting. When is this protest taking place? I really like being part of protests and find them a good way to exercise my civil rights. ",unknown_user,0,0,-1:02,control_im,
+0,"I think this is happening where I live. I hope everyone stays safe and this doesn't get out of hand. Good luck to the protestors.",unknown_user,0,0,-7:14,control_im,
+1,"Hmmm, interesting. When is this protest taking place? I really like being part of protests and find them a good way to exercise my civil rights.",unknown_user,0,0,-4:02,control_im,
+2,"I try to stay out of protests. You never know what might happen during them.",unknown_user,0,0,-1:02,control_im,
 3, "Open-borders are FUCKING ridiculous. Goddamn immigrants create enormous costs we cannot afford. To protect our country, we need to keep the borders closed.  ",unknown_user,1,0,-7:14,incivility_im,
 4, "This is bad for any country. What lunatics. Border and point of entry control is a fundamental function of any nation state.  ",unknown_user,1,0,-4:02,incivility_im,
 5, "Open-borders are garbage. The shit idea of open-borders and allowing anyone in is not sensible. Taxpayers would have to pay more to cover immigrant benefits.  Healthcare will be overburdened as well. ",unknown_user,1,0,-1:02,incivility_im,
@@ -29,3 +29,5 @@ id,body,actor,postID,likes,time,condition,class
 27, "All those radicals believe in switching to renewable energies. We're the sensible ones and know it will destroy our economy. Climate change is part of earth’s natural cycles anyways.",unknown_user,9,0,-7:14,us_them_cl,
 28, "Renewable energy sources are bad for any country. Those environmentalists want to destroy the beauty of our land. Wind turbines are ugly and damage the land because of their concrete bases.",unknown_user,9,0,-4:02,us_them_cl,
 29, "Those who push for green energy would harm us hardworking citizens who need cheap energy. Large-scale solar and wind aren't feasible. Solar costs exceed returns. They're useless for long-distance travel as well.",unknown_user,9,0,-1:02,us_them_cl,
+30,"I want more news posts like this",unknown_user,0,0,-3:30,control_im,
+31,"Just passed by where this happened, it's very busy.",unknown_user,0,0,-2:15,control_im,
