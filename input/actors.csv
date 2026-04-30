@@ -1,4 +1,8 @@
 username,name,gender,age,location,bio,picture,condition,class
 news_brand,News,,,,"the most up to date news around",genericphoto1.png,,
 breaking_news,News Site,,,,"we provide breaking news",genericphoto2.png,,
-unknown_user,Unknown,,,,,genericphoto3.png,,
+unknown_user0,unknown_024,,,,,genericphoto5.png,,
+unknown_user1,unknown_136,,,,,genericphoto6.png,,
+unknown_user2,unknown_278,,,,,genericphoto3.png,,
+unknown_user3,unknown_334,,,,,genericphoto4.png,, 
+unknown_user4,unknown_456,,,,,genericphoto5.png,,       
