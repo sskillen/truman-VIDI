@@ -1,0 +1,11 @@
+id,body,picture,actor,likes,time,condition,class
+0,Einwanderungsproteste eskalieren.,immigration.jpg,news_brand,0,-20:35:00,control_im,
+1,Einwanderungsproteste eskalieren.,immigration.jpg,news_brand,0,-20:35:00,incivility_im,
+2,Einwanderungsproteste eskalieren.,immigration.jpg,news_brand,0,-20:35:00,intolerance_im,
+3,Einwanderungsproteste eskalieren.,immigration.jpg,news_brand,0,-20:35:00,misinformation_im,
+4,Einwanderungsproteste eskalieren.,immigration.jpg,news_brand,0,-20:35:00,us_them_im,
+5,Klimaproteste eskalieren.,climate-change.jpg,breaking_news,0,-20:35:00,control_cli,
+6,Klimaproteste eskalieren.,climate-change.jpg,breaking_news,0,-20:35:00,incivility_cli,
+7,Klimaproteste eskalieren.,climate-change.jpg,breaking_news,0,-20:35:00,intolerance_cli,
+8,Klimaproteste eskalieren.,climate-change.jpg,breaking_news,0,-20:35:00,misinformation_cli,
+9,Klimaproteste eskalieren.,climate-change.jpg,breaking_news,0,-20:35:00,us_them_cli,

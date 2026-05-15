@@ -4,12 +4,14 @@ const color_error = '\x1b[31m%s\x1b[0m'; // red
 
 console.log(color_start, 'Started populate.js script...');
 
+const dotenv = require('dotenv');
+dotenv.config({ path: '.env' });
+
 const async = require('async');
 const Actor = require('./models/Actor.js');
 const Script = require('./models/Script.js');
 const Notification = require('./models/Notification.js');
 const _ = require('lodash');
-const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const CSVToJSON = require("csvtojson");
 
@@ -27,8 +29,6 @@ var posts_list;
 var comment_list;
 var notification_list;
 var notification_reply_list;
-
-dotenv.config({ path: '.env' });
 
 mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI, { useNewUrlParser: true });
 var db = mongoose.connection;
