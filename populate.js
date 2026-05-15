@@ -123,7 +123,7 @@ async function doPopulate() {
         }).then(function(result) {
             console.log(color_start, "Starting to populate actors collection...");
             return new Promise((resolve, reject) => {
-                async.each(actors_list, async function(actor_raw, callback) {
+                async.each(actors_list, async function(actor_raw) {
                         const actordetail = {
                             username: actor_raw.username,
                             profile: {
@@ -143,13 +143,13 @@ async function doPopulate() {
                             await actor.save();
                         } catch (err) {
                             console.log(color_error, "ERROR: Something went wrong with saving actor in database");
-                            next(err);
+                            throw err;
                         }
                     },
                     function(err) {
                         if (err) {
                             console.log(color_error, "ERROR: Something went wrong with saving actors in database");
-                            callback(err);
+                            return reject(err);
                         }
                         // Return response
                         console.log(color_success, "All actors added to database!")
@@ -165,7 +165,7 @@ async function doPopulate() {
         }).then(function(result) {
             console.log(color_start, "Starting to populate posts collection...");
             return new Promise((resolve, reject) => {
-                async.each(posts_list, async function(new_post, callback) {
+                async.each(posts_list, async function(new_post) {
                         const act = await Actor.findOne({ username: new_post.actor }).exec();
                         if (act) {
                             const postdetail = {
@@ -184,17 +184,17 @@ async function doPopulate() {
                                 await script.save();
                             } catch (err) {
                                 console.log(color_error, "ERROR: Something went wrong with saving post in database");
-                                next(err);
+                                throw err;
                             }
                         } else { //Else no actor found
                             console.log(color_error, "ERROR: Actor not found in database");
-                            callback();
+                            return;
                         };
                     },
                     function(err) {
                         if (err) {
                             console.log(color_error, "ERROR: Something went wrong with saving posts in database");
-                            callback(err);
+                            return reject(err);
                         }
                         // Return response
                         console.log(color_success, "All posts added to database!")
@@ -213,14 +213,14 @@ async function doPopulate() {
         .then(function(result) {
             console.log(color_start, "Starting to populate post replies...");
             return new Promise((resolve, reject) => {
-                async.eachSeries(comment_list, async function(new_reply, callback) {
+                async.eachSeries(comment_list, async function(new_reply) {
                         const act = await Actor.findOne({ username: new_reply.actor }).exec();
                         if (act) {
                             const pr = await Script.findOne({ postID: new_reply.postID }).exec();
                             if (pr) {
                                 if (pr.time > timeStringToNum(new_reply.time)) {
                                     console.log(color_error, "ERROR: The simulated time for this comment (commentID: " + new_reply.id + ") is before the simulated time of the post.");
-                                    next(err);
+                                    return;
                                 }
                                 const comment_detail = {
                                     commentID: new_reply.id,
@@ -239,22 +239,22 @@ async function doPopulate() {
                                     await pr.save();
                                 } catch (err) {
                                     console.log(color_error, "ERROR: Something went wrong with saving reply in database");
-                                    next(err);
+                                    throw err;
                                 }
                             } else { //Else no post found
                                 console.log(color_error, "ERROR: Post not found in database");
-                                callback();
+                                return;
                             }
 
                         } else { //Else no actor found
                             console.log(color_error, "ERROR: Actor not found in database");
-                            callback();
+                            return;
                         }
                     },
                     function(err) {
                         if (err) {
                             console.log(color_error, "ERROR: Something went wrong with saving replies in database");
-                            callback(err);
+                            return reject(err);
                         }
                         // Return response
                         console.log(color_success, "All replies added to database!");
@@ -272,7 +272,7 @@ async function doPopulate() {
         .then(function(result) {
             console.log(color_start, "Starting to populate notifications (replies) collection...");
             return new Promise((resolve, reject) => {
-                async.each(notification_reply_list, async function(new_notify, callback) {
+                async.each(notification_reply_list, async function(new_notify) {
                         const act = await Actor.findOne({ username: new_notify.actor }).exec();
                         if (act) {
                             const notifydetail = {
@@ -291,11 +291,11 @@ async function doPopulate() {
                             } catch (err) {
                                 console.log(color_error, "ERROR: Something went wrong with saving notification(reply) in database");
                                 console.log(err);
-                                next(err);
+                                throw err;
                             }
                         } else { //Else no actor found
                             console.log(color_error, "ERROR: Actor not found in database");
-                            callback();
+                            return;
                         }
                     },
                     function(err) {
@@ -316,7 +316,7 @@ async function doPopulate() {
         }).then(function(result) {
             console.log(color_start, "Starting to populate notifications (likes, reads) collection...");
             return new Promise((resolve, reject) => {
-                async.each(notification_list, async function(new_notify, callback) {
+                async.each(notification_list, async function(new_notify) {
                         const act = await Actor.findOne({ username: new_notify.actor }).exec();
                         if (act) {
                             const notifydetail = {
@@ -340,17 +340,17 @@ async function doPopulate() {
                                 await notify.save();
                             } catch (err) {
                                 console.log(color_error, "ERROR: Something went wrong with saving notification(like, read) in database");
-                                next(err);
+                                throw err;
                             }
                         } else { //Else no actor found
                             console.log(color_error, "ERROR: Actor not found in database");
-                            callback();
+                            return;
                         }
                     },
                     function(err) {
                         if (err) {
                             console.log(color_error, "ERROR: Something went wrong with saving notifications in database");
-                            callback(err);
+                            return reject(err);
                         }
                         // Return response
                         console.log(color_success, "All notifications added to database!");
