@@ -17,6 +17,7 @@ const CSVToJSON = require("csvtojson");
 
 //Input Files
 const inputDir = `./input-${process.env.LANGUAGE || 'en'}`;
+console.log(color_start, `Using input directory: ${inputDir} (LANGUAGE=${process.env.LANGUAGE})`);
 const actor_inputFile = `${inputDir}/actors.csv`;
 const posts_inputFile = `${inputDir}/posts.csv`;
 const replies_inputFile = `${inputDir}/replies.csv`;
