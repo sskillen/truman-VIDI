@@ -167,6 +167,7 @@ app.disable('x-powered-by');
 app.use((req, res, next) => {
     res.locals.user = req.user;
     res.locals.cdn = process.env.CDN;
+    res.locals.language = process.env.LANGUAGE || 'en';
     next();
 });
 

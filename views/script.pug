@@ -28,7 +28,12 @@ block content
     .ui.fluid.card
       .content
         .description
-        |  End of Posts for the last 24 hours.
+        if language === 'de'
+          |  Ende der Beiträge der letzten 24 Stunden.
+        else if language === 'nl'
+          |  Einde van de posts van de afgelopen 24 uur.
+        else
+          |  End of Posts for the last 24 hours.
   .computer.only.tablet.only.four.wide.column
     
   .ui.tiny.post.modal
